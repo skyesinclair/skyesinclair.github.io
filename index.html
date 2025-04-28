@@ -12,8 +12,17 @@
         font-weight: 300;
         font-style: normal;
     }
+    @keyframes loader {
+        0% {
+            transform: rotate(-10deg);
+        }
+        100% {
+            transform: rotate(10deg);
+        }
+    }
     #logo{
         margin: -50px auto;
+        animation: loader 10s;
     }
 
     #box {

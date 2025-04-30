@@ -14,7 +14,19 @@
         font-style: normal;
     }
 
-    @keyframes fadein {
+
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        80% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes ring {
         0% {
             opacity: 0;
             transform: scale(1.5);
@@ -64,42 +76,42 @@
     }
 
     .logo:nth-child(1) {
-        animation: ccw 1.3s;
-        animation-iteration-count: 1;
+        animation: cw 1s;
+        animation-iteration-count: 2;
         animation-timing-function: linear;
     }
 
     .logo:nth-child(2) {
-        animation: cw 2s;
+        animation: cw 2.5s;
         animation-iteration-count: 1;
         animation-timing-function: linear;
     }
 
     .logo:nth-child(3) {
-        animation: ccw 4s;
-        animation-iteration-count: 1;
+        animation: ccw 2.1s, fade 3s;
+        animation-iteration-count: 2,1;
         animation-timing-function: linear;
     }
 
     .logo:nth-child(4) {
-        animation: ccw 3s;
-        animation-iteration-count: 1;
+        animation: cw 2.4s, fade 3s;
+        animation-iteration-count: 2,1;
         animation-timing-function: linear;
     }
 
     .logo:nth-child(5) {
-        animation: cw 2s;
-        animation-iteration-count: 2;
+        animation: ccw 2s, fade 6s;
+        animation-iteration-count: 3, 1;
         animation-timing-function: linear;
     }
 
     .logo:nth-child(6) {
-        animation: cw 2.2s;
-        animation-iteration-count: 2;
+        animation: cw 1.6s, fade 6s;
+        animation-iteration-count: 4, 1;
         animation-timing-function: linear;
     }
     .logo:nth-child(7) {
-        animation: fadein 12s;
+        animation: ring 12s;
         animation-iteration-count: 1;
         border-radius: 50%;
         animation-fill-mode: forwards;

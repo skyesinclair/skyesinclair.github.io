@@ -7,22 +7,94 @@
 <meta http-equiv="refresh" content="8;url=https://www.linkedin.com/in/skyejsinclair/"/>
 <style>
     body {
+        background-color: lightgray;
         font-family: "Oswald", sans-serif;
         font-optical-sizing: auto;
         font-weight: 300;
         font-style: normal;
     }
-    @keyframes loader {
+
+    @keyframes fadein {
         0% {
-            transform: rotate(-10deg);
+            opacity: 0;
+            transform: scale(1.5);
         }
         100% {
-            transform: rotate(10deg);
+            opacity: 1;
+            transform: scale(1);
         }
     }
-    #logo{
-        margin: -50px auto;
-        animation: loader 10s;
+
+    @keyframes cw {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes ccw {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+    #logo-container {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        position: relative;
+    }
+
+    .logo {
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .logo:nth-child(1) {
+        animation: ccw 1.3s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+    }
+
+    .logo:nth-child(2) {
+        animation: cw 2s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+    }
+
+    .logo:nth-child(3) {
+        animation: ccw 4s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+    }
+
+    .logo:nth-child(4) {
+        animation: ccw 3s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+    }
+
+    .logo:nth-child(5) {
+        animation: cw 1s;
+        animation-iteration-count: 4;
+        animation-timing-function: linear;
+    }
+
+    .logo:nth-child(6) {
+        animation: cw 1.2s;
+        animation-iteration-count: 3;
+        animation-timing-function: linear;
+    }
+    .logo:nth-child(7) {
+        animation: fadein 5s;
+        animation-iteration-count: 1;
     }
 
     #box {
@@ -31,12 +103,21 @@
         text-align: center;
     }
 </style>
-<html>
+<html lang="en">
 <body>
 <div id="box">
     <h1>Skye Sinclair</h1>
     <h2> Ability &bull; Agility &bull; Assurance</h2>
-    <img id="logo" src="design.svg" alt="Logo" style="width:400px;height:400px;">
+    <div id="logo-container">
+        <img src="logo/logo-large-L.png" alt="Logo" class="logo">
+        <img src="logo/logo-large-R.png" alt="Logo" class="logo">
+        <img src="logo/logo-med-L.png" alt="Logo" class="logo">
+        <img src="logo/logo-med-R.png" alt="Logo" class="logo">
+        <img src="logo/logo-small-L.png" alt="Logo" class="logo">
+        <img src="logo/logo-small-R.png" alt="Logo" class="logo">
+        <img src="logo/logo-ring.png" alt="Logo" class="logo">
+
+    </div>
     <p>Redirecting to <a href="https://www.linkedin.com/in/skyejsinclair/"> LinkedIn</a></p>
 </div>
 </body>

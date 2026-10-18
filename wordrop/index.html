@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>worDrop</title>
+<style>
+  html, body { margin: 0; background: transparent; }
+  body.solo { padding: 16px; background: #d3d3d3; }
+</style>
+</head>
+<body>
+<div data-wordrop data-theme="light" id="game"></div>
+<script src="wordrop.js" defer></script>
+<script>
+// When this page is inside the iframe on the home page, it reports its height to the parent
+// (so the frame never needs its own scrollbar) and sizes the game to the parent's window height.
+(function () {
+  var host = document.getElementById('game');
+  if (window.parent === window) { document.body.className = 'solo'; return; }
+  function report() {
+    parent.postMessage({ type: 'wordrop-height', height: Math.ceil(document.body.getBoundingClientRect().height) }, '*');
+  }
+  if (window.ResizeObserver) new ResizeObserver(report).observe(document.body);
+  window.addEventListener('load', report);
+  window.addEventListener('message', function (e) {
+    if (e.source === window.parent && e.data && e.data.type === 'wordrop-viewport') host.setAttribute('data-viewport-height', String(e.data.height | 0));
+  });
+  parent.postMessage({ type: 'wordrop-ready' }, '*');
+})();
+</script>
+</body>
+</html>

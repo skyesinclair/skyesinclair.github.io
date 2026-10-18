@@ -1,144 +1,132 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Skye Sinclair</title>
-<link rel="icon" type="image/x-icon" href="design.svg">
+<meta name="description" content="Skye Sinclair: Ability, Agility, Assurance. Play worDrop, a falling-letter word game.">
+<link rel="icon" type="image/svg+xml" href="design.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-<meta http-equiv="refresh" content="12;url=https://www.linkedin.com/in/skyejsinclair/"/>
 <style>
+    :root {
+        --bg: lightgray;
+        --ink: #1d1d1f;
+        --muted: #4a4a4f;
+        --link: #0a66c2; /* LinkedIn blue */
+    }
+    * { box-sizing: border-box; }
     body {
-        background-color: lightgray;
-        font-family: "Oswald", sans-serif;
+        margin: 0;
+        background-color: var(--bg);
+        color: var(--ink);
+        font-family: "Oswald", "Arial Narrow", sans-serif;
         font-optical-sizing: auto;
         font-weight: 300;
         font-style: normal;
+        padding: 24px max(16px, env(safe-area-inset-left)) 48px max(16px, env(safe-area-inset-right));
     }
+    a { color: var(--link); }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; border-radius: 4px; }
 
+    /* ---------- header: name, tagline, animated logo (same animation as before) ---------- */
+    #box { margin: 0 auto; max-width: 500px; text-align: center; }
+    h1 { font-weight: 400; font-size: clamp(2rem, 6vw, 2.6rem); margin: 0.4em 0 0.1em; letter-spacing: 0.02em; }
+    .tagline { font-weight: 300; font-size: clamp(1.1rem, 3.6vw, 1.5rem); margin: 0 0 1em; color: var(--muted); }
 
-    @keyframes fade {
-        0% {
-            opacity: 0;
-        }
-        80% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
+    @keyframes fade { 0% { opacity: 0; } 80% { opacity: 0; } 100% { opacity: 1; } }
     @keyframes ring {
-        0% {
-            opacity: 0;
-            transform: scale(1.5);
-            box-shadow: none;
-        }
-        50% {
-            transform: scale(1);
-            box-shadow: -10px 0 10px 10px white;
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-            box-shadow: 10px 5px 20px 20px white;
-        }
+        0%   { opacity: 0; transform: scale(1.5); box-shadow: none; }
+        50%  { transform: scale(1); box-shadow: -10px 0 10px 10px white; }
+        100% { opacity: 1; transform: scale(1); box-shadow: 10px 5px 20px 20px white; }
     }
-
-    @keyframes cw {
-        0% {
-            transform: rotate(0);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes ccw {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(-360deg);
-        }
-    }
+    @keyframes cw  { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
+    @keyframes ccw { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
 
     #logo-container {
-        width: 300px;
-        height: 300px;
+        display: block;
+        width: min(300px, 70vw);
+        aspect-ratio: 1;
         margin: auto;
         position: relative;
-    }
-
-    .logo {
-        width: 300px;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .logo:nth-child(1) {
-        animation: cw 1s;
-        animation-iteration-count: 2;
-        animation-timing-function: linear;
-    }
-
-    .logo:nth-child(2) {
-        animation: cw 2.5s;
-        animation-iteration-count: 1;
-        animation-timing-function: linear;
-    }
-
-    .logo:nth-child(3) {
-        animation: ccw 2.1s, fade 3s;
-        animation-iteration-count: 2,1;
-        animation-timing-function: linear;
-    }
-
-    .logo:nth-child(4) {
-        animation: cw 2.4s, fade 3s;
-        animation-iteration-count: 2,1;
-        animation-timing-function: linear;
-    }
-
-    .logo:nth-child(5) {
-        animation: ccw 2s, fade 6s;
-        animation-iteration-count: 3, 1;
-        animation-timing-function: linear;
-    }
-
-    .logo:nth-child(6) {
-        animation: cw 1.6s, fade 6s;
-        animation-iteration-count: 4, 1;
-        animation-timing-function: linear;
-    }
-    .logo:nth-child(7) {
-        animation: ring 12s;
-        animation-iteration-count: 1;
         border-radius: 50%;
-        animation-fill-mode: forwards;
     }
+    .logo { width: 100%; position: absolute; top: 0; left: 0; }
+    .logo:nth-child(1) { animation: cw 1s linear 2; }
+    .logo:nth-child(2) { animation: cw 2.5s linear 1; }
+    .logo:nth-child(3) { animation: ccw 2.1s linear 2, fade 3s linear 1; }
+    .logo:nth-child(4) { animation: cw 2.4s linear 2, fade 3s linear 1; }
+    .logo:nth-child(5) { animation: ccw 2s linear 3, fade 6s linear 1; }
+    .logo:nth-child(6) { animation: cw 1.6s linear 4, fade 6s linear 1; }
+    .logo:nth-child(7) { animation: ring 12s 1 forwards; border-radius: 50%; }
+    #logo-container:hover .logo:nth-child(7) { filter: brightness(1.06); }
+    @media (prefers-reduced-motion: reduce) { .logo { animation: none !important; } }
 
-    #box {
-        margin: auto;
-        width: 500px;
-        text-align: center;
+    .connect { margin: 1.4em 0 0; font-size: 1.1rem; letter-spacing: 0.04em; }
+    .connect a { text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+    /* ---------- worDrop ---------- */
+    #play { max-width: 1100px; margin: 56px auto 0; }
+    #play header { text-align: center; margin-bottom: 16px; }
+    #play h2 { font-weight: 400; font-size: 1.8rem; margin: 0; letter-spacing: 0.03em; }
+    #play p { margin: 0.2em 0 0; color: var(--muted); font-size: 1.05rem; }
+    #wordrop-frame {
+        display: block;
+        width: 100%;
+        height: 820px;            /* replaced by the game's real height once it loads */
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color-scheme: light;
     }
+    .hint { text-align: center; font-size: 0.95rem; }
+    footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
 </style>
-<html lang="en">
+</head>
 <body>
 <div id="box">
     <h1>Skye Sinclair</h1>
-    <h2> Ability &bull; Agility &bull; Assurance</h2>
-    <div id="logo-container">
-        <img src="logo/logo-large-L.png" alt="Logo" class="logo">
-        <img src="logo/logo-large-R.png" alt="Logo" class="logo">
-        <img src="logo/logo-med-L.png" alt="Logo" class="logo">
-        <img src="logo/logo-med-R.png" alt="Logo" class="logo">
-        <img src="logo/logo-small-L.png" alt="Logo" class="logo">
-        <img src="logo/logo-small-R.png" alt="Logo" class="logo">
-        <img src="logo/logo-ring.png" alt="Logo" class="logo">
-
-    </div>
-    <p>Redirecting to <a href="https://www.linkedin.com/in/skyejsinclair/"> LinkedIn</a></p>
+    <p class="tagline">Ability &bull; Agility &bull; Assurance</p>
+    <a id="logo-container" href="https://www.linkedin.com/in/skyejsinclair/" aria-label="Skye Sinclair on LinkedIn">
+        <img src="logo/logo-large-L.png" alt="" class="logo">
+        <img src="logo/logo-large-R.png" alt="" class="logo">
+        <img src="logo/logo-med-L.png" alt="" class="logo">
+        <img src="logo/logo-med-R.png" alt="" class="logo">
+        <img src="logo/logo-small-L.png" alt="" class="logo">
+        <img src="logo/logo-small-R.png" alt="" class="logo">
+        <img src="logo/logo-ring.png" alt="Skye Sinclair logo" class="logo">
+    </a>
+    <p class="connect"><a href="https://www.linkedin.com/in/skyejsinclair/">Connect on LinkedIn</a></p>
 </div>
+
+<section id="play" aria-labelledby="play-title">
+    <header>
+        <h2 id="play-title">worDrop</h2>
+        <p>Letters fall. Spell words across or down to clear them. A game I'm building.</p>
+    </header>
+    <iframe id="wordrop-frame" src="wordrop/index.html" title="worDrop word game" loading="lazy" allow="fullscreen"></iframe>
+    <p class="hint">Click the game to play. Arrow keys move, Up turns, Space drops.</p>
+</section>
+
+<footer>&copy; <span id="yr">2026</span> Skye Sinclair</footer>
+
+<script>
+// Keep the game frame exactly as tall as the game, and size the game to this window.
+(function () {
+    var f = document.getElementById('wordrop-frame');
+    function sendViewport() {
+        if (f.contentWindow) f.contentWindow.postMessage({ type: 'wordrop-viewport', height: Math.round(window.innerHeight * 0.96) }, '*');
+    }
+    window.addEventListener('message', function (e) {
+        if (e.source !== f.contentWindow || !e.data) return;
+        if (e.data.type === 'wordrop-height' && e.data.height > 200) f.style.height = e.data.height + 'px';
+        if (e.data.type === 'wordrop-ready') sendViewport();
+    });
+    window.addEventListener('resize', sendViewport);
+    f.addEventListener('load', sendViewport);
+    document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
